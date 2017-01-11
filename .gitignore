@@ -1,1 +1,5 @@
 [Bb]uild/
+
+# text backups
+*~
+*.swp

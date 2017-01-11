@@ -1,44 +1,26 @@
-cmake_minimum_required(VERSION 3.0)
-project(Haze2D)
+## Haze2D CMake script ##
 
-add_subdirectory(Haze2D/3rdparty/SFML)
+cmake_minimum_required(VERSION 2.6)
 
-if(MSVC)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
-else()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -std=c++11")
-    if(NOT WIN32)
-        set(GLAD_LIBRARIES dl)
-    endif()
-endif()
+project (Haze2D)
 
-include_directories(Haze2D/include/
-        Haze2D/include/Core/
-        Haze2D/include/Audio/
-        Haze2D/include/Graphics/
-        Haze2D/include/Physics/
-        Haze2D/3rdparty/SFML/include)
+option (SFML_STATIC_LIBRARIES "Use SFML static libraries instead of the dynamic ones" OFF)
 
-file(GLOB PROJECT_HEADERS Haze2D/include/*.hpp
-        Haze2D/include/Core/*.hpp
-        Haze2D/include/Audio/*.hpp
-        Haze2D/include/Graphics/*.hpp
-        Haze2D/include/Physics/*.hpp)
+# Include extra cmake modules
+set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
+# Try to find SFML in user's machine
+find_package (SFML 2 COMPONENTS system graphics window audio network)
+# Use 3rdparty one if SFML was not found
+if (NOT SFML_FOUND)
+	add_subdirectory (Haze2D/3rdparty/SFML)
+	set (SFML_INCLUDE_DIR "Haze2D/3rdparty/SFML/include")
+	set (SFML_LIBRARIES sfml-system sfml-network sfml-window sfml-audio sfml-graphics)
+endif ()
 
-file(GLOB PROJECT_SOURCES Haze2D/src/*.cpp
-        Haze2D/src/Core/*.cpp
-        Haze2D/src/Audio/*.cpp
-        Haze2D/src/Graphics/*.cpp
-        Haze2D/src/Physics/*.cpp)
+if (MSVC)
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+else ()
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -std=c++11")
+endif ()
 
-source_group("Headers" FILES ${PROJECT_HEADERS})
-source_group("Shaders" FILES ${PROJECT_SHADERS})
-source_group("Sources" FILES ${PROJECT_SOURCES})
-
-add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS}
-                               ${PROJECT_SHADERS} ${PROJECT_CONFIGS})
-
-target_link_libraries(${PROJECT_NAME} sfml-system sfml-network sfml-window sfml-audio sfml-graphics)
-
-set_target_properties(${PROJECT_NAME} PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
+add_subdirectory (Haze2D)
