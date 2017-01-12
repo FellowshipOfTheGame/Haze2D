@@ -24,3 +24,4 @@ else ()
 endif ()
 
 add_subdirectory (Haze2D)
+add_subdirectory (demo)
