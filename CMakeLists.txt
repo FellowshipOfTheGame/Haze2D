@@ -13,7 +13,7 @@ find_package (SFML 2 COMPONENTS system graphics window audio network)
 # Use 3rdparty one if SFML was not found
 if (NOT SFML_FOUND)
 	add_subdirectory (Haze2D/3rdparty/SFML)
-	set (SFML_INCLUDE_DIR "Haze2D/3rdparty/SFML/include")
+	set (SFML_INCLUDE_DIR "3rdparty/SFML/include")
 	set (SFML_LIBRARIES sfml-system sfml-network sfml-window sfml-audio sfml-graphics)
 endif ()
 
