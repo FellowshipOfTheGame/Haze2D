@@ -1,7 +1,3 @@
-include_directories (
-	"include/"
-	${SFML_INCLUDE_DIR})
-
 # file (GLOB_RECURSE PROJECT_HEADERS include/*.hpp)
 file (GLOB_RECURSE PROJECT_SOURCES src/*.cpp)
 # file (GLOB_RECURSE PROJECT_SHADERS shaders/*.???)

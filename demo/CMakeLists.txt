@@ -1,7 +1,4 @@
-include_directories(
-        include,
-        ../Haze2D/include
-)
+include_directories(include)
 
 file (GLOB_RECURSE DEMO_SOURCES src/*.cpp)
 

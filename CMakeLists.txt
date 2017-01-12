@@ -23,5 +23,10 @@ else ()
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -std=c++11")
 endif ()
 
+include_directories (
+		"Haze2D/include/"
+		${SFML_INCLUDE_DIR}
+)
+
 add_subdirectory (Haze2D)
 add_subdirectory (demo)
