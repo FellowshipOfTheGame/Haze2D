@@ -1,5 +1,8 @@
 [Bb]uild/
+.idea
+cmake-build-debug/
 
 # text backups
 *~
 *.swp
+
