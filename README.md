@@ -3,7 +3,7 @@ Haze2D é uma biblioteca de desenvolvimento de jogos 2D construída por cima da 
 
 ## Compilação
 A biblioteca faz uso da SFML 2.x.x e, para a compilação, é necessário ter instalado a biblioteca disponível no site oficial ou da compilação da mesma. Além disso é precisso [CMake](http://cmake.org/) que gerará os arquivos de projeto. Caso o CMake não encontre as bibliotecas instaladas no computador, ele tentará compilar a biblioteca diretamente do repositório. Para isso são necessários os seguintes procedimentos:
-* Clone o projeto usando, adcionando a opção `--recursive` para a compilação junto com o SFML.
+* Clone o projeto, adicionando a opção `--recursive` para a compilação junto com o SFML.
 * Dentro da pasta do repositório clonado:
 ```
 mkdir build
