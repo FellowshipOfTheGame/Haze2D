@@ -10,11 +10,6 @@ option (BOX2D_BUILD_STATIC "Build Box2D static libraries" ON)
 option (BOX2D_BUILD_EXAMPLES "Build Box2D examples" OFF)
 option (BOX2D_INSTALL "Install Box2D libs, includes, and CMake scripts" ON)
 
-set (SFML_STATIC_LIBRARIES OFF)
-set (BOX2D_BUILD_SHARED OFF)
-set (BOX2D_BUILD_STATIC ON)
-set (BOX2D_BUILD_EXAMPLES OFF)
-set (BOX2D_INSTALL ON)
 
 # Include extra cmake modules
 set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
